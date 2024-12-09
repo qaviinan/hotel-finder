@@ -1,8 +1,8 @@
-# Simple Travel Application
+# Intuitive travel search engine
 
 ## Overview
 
-The Simple Travel Application is a comprehensive solution designed to provide users with detailed travel listings through a responsive web interface and a robust backend. The frontend is built with **Next.js**, offering a seamless and interactive user experience, while the backend leverages **Django** to handle data processing, API endpoints, and integrations with external services.
+What if you could ask AI to find the perfect vacation rental for your needs? This application is designed to provide users with detailed travel listings through a responsive web interface and a robust backend. The front end is built with Next.js, offering a seamless and interactive user experience, while the backend leverages Django to handle data processing, API endpoints, and integrations with external services.
 
 ## Features
 
