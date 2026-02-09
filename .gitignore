@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Node/Next
+**/node_modules/
+**/.next/
+**/.npm-cache/
+npm-debug.log*
+
+# Python
+**/__pycache__/
+**/.pytest_cache/
+**/*.pyc
+
+# Local env secrets
+simple-travel-backend/.env
+simple-travel-website/.env.local
+simple-travel-website/.env.development.local
+simple-travel-website/.env.production.local
+
+# Local runtime logs
+*.log

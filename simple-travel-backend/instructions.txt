@@ -1,0 +1,47 @@
+chmod 400 anchorblock-qavi.pem
+
+#frontend
+ssh -i "anchorblock-qavi.pem" ec2-user@ec2-3-101-175-34.us-west-1.compute.amazonaws.com
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+source ~/.bashrc
+nvm install node # This installs the latest Node.js version
+nvm use node
+
+sudo yum update -y
+sudo yum install git -y
+git config --global user.name “BakedJesus”
+git config --global user.email “qaviinan@gmail.com”
+#Launch frontend
+npm run start
+
+http://localhost:3000/hotels
+
+#backend
+ssh -i "anchorblock-qavi.pem" ubuntu@ec2-13-56-89-104.us-west-1.compute.amazonaws.com
+
+sudo apt-get install git
+scp -i ~/repos/pass/anchorblock-qavi.pem chroma.sqlite3 ubuntu@13.56.89.104:~/finRag-backend/chromadb
+scp -i ~/repos/pass/anchorblock-qavi.pem .env ubuntu@54.176.56.44:~/finRag-backend/
+# Launch backend
+gunicorn -w 2 -b 0.0.0.0:8001 app:app
+
+
+# Postgres
+<redacted-secret-token>
+
+
+# TODO
+
+backend:
+ - DONE: send hotel_description in filtered_df
+ - DONE: regex converted query and return var_names along with filtered_df
+ - take all images and descriptions, embed them and store in local chromadb [later transfer to supabase if easy]
+    - each image>haiku description>app.chat('summarize these images using {hotel_description_and_info} as context')>summary appended to hotel description>embed
+    - hotel_description_and_info = description + Df(listing_feature, feature_value, average_feature_value_for_all_hotels_in_price_range)
+ - when queried, run app.retrieve alongside converted python query.
+
+ frontend:
+ - DONE: add filter badges under search bar: populated from response.var_names
+ - DONE: better thumbnail to card size matching, fullscreen should only have 4 columns
+ - nested search: each query applies to the previous results
